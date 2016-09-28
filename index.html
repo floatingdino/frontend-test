@@ -1,0 +1,231 @@
+<!doctype HTML>
+<head>
+<title> </title>                       <!-- TODO: PAGE TITLE -->
+<link rel="icon" href="">              <!-- TODO: FAVICON -->
+<link rel="stylesheet" href="pikaday.css">
+<meta name="description" content="">   <!-- TODO: META DESCRIPTION -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Arvo|Lato:300" rel="stylesheet">
+
+<style>
+/*RESETS*/
+body, html, div, img, h1, h2, h3, h4, h5, h6, p, input, textarea, form, ul, ol, li, header, main, section, footer, nav, canvas{max-width:100%; height:auto; box-sizing:border-box; display:block;margin:0;padding:0;}
+body, html{min-height:100%;background-color:white;}
+.clear{clear:both;}
+/*FONTS*/
+body, input{
+   font-family:'Lato','Helvetica', sans-serif;
+   font-size:17px;
+   font-weight:300;
+}
+h1, h2, input[type="submit"]{
+   font-family:'Arvo', serif;
+   line-height:1.4;
+}
+p{
+   margin-bottom:16px;
+}
+header h1{
+   width:540px;
+   font-size:65px;
+   position:absolute;
+   top:50%;
+   transform:translateY(-50%);
+}
+.block h2{
+   font-size:48px;
+   border-bottom:1px solid;
+   border-color:white;
+   margin-bottom:20px;
+}
+.block.white h2{
+   border-color:#005ba9;
+   color:#005ba9;
+}
+footer p{
+   line-height:50px;
+   display:inline-block;
+   margin:0;
+}
+a{color:inherit;}
+/*ELEMENTS*/
+header, #map-canvas{
+   width:100%;
+   color:white;
+   background-position:center;
+   background-size:cover;
+   background-repeat:no-repeat;
+}
+header{
+   height:900px;
+   background-image:url(top-bg.png);
+   padding:20px;
+   position:relative;
+}
+main, .container{
+   width:1140px;
+   margin:0 auto;
+}
+main{
+   margin:15px auto;
+}
+footer{
+   background-color:black;
+   color:white;
+}
+footer .container{
+   padding:0 20px;
+}
+section.block{
+   width:540px;
+   margin:15px;
+   min-height:300px;
+   background-color:#005ba9;
+   color:white;
+   padding:10px 15px;
+   float:left;
+}
+@media screen and (max-width:1140px){
+   section.block{
+      margin:15px auto;
+      float:none;
+   }
+}
+.block.white{
+   color:black;
+   border:5px solid #005ba9;
+   background-color:white;
+}
+input{
+   color:#005ba9;
+   border-style:solid;
+   border-width:5px 0 0 0;
+   border-color:#005ba9;
+   background-color:#e6e6e6;
+   padding:10px 15px;
+   width:235px;
+   font-size:24px;
+   float:left;
+   vertical-align: top;
+}
+input:first-of-type{width:100%;margin-bottom:15px;}
+input:last-of-type{margin-left:30px;}
+input[type="submit"]{
+   background-color:#005ba9;
+   color:white;
+   border:none;
+   padding:10px 0;
+   cursor:pointer;
+}
+.block.image{
+   background-image:url('small.png');
+   background-size:cover;
+   background-repeat:no-repeat;
+   background-position:center;
+}
+#map-canvas{
+   width:100%;
+   height:450px;
+}
+ul.social{
+   float:right;
+   list-style:none;
+   color:transparent;
+}
+ul.social li{
+   display:inline-block;
+   width:20px;
+   margin:0 5px;
+   line-height:50px;
+   background-size:contain;
+   background-position:center center;
+   background-repeat:no-repeat;
+}
+ul.social a:last-of-type li{margin-right:0;}
+.fb{background-image:url(fb.png);}
+.twit{background-image:url(twit.png);}
+.insta{background-image:url(insta.png);}
+/*DATE PICKER*/
+.pika-single{
+   color:#005ba9;
+   background-color:#e6e6e6;
+   font-family:'Lato', 'Helvetica', sans-serif;
+}
+.pika-button{
+   background-color:#e6e6e6;
+   color:#005ba9;
+}
+.pika-label{
+   background-color:transparent;
+   font-family:'Arvo', serif;
+}
+.is-today .pika-button{
+   color:#005ba9;
+}
+.is-selected .pika-button, .pika-button:hover{
+   background-color:#005ba9 !important;
+   color:white !important;
+}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+   <img class="logo" src="logo.png">
+   <h1>The only place to stay on the Sunshine Coast</h1>
+</div>
+</header>
+<main>
+<section class="block">
+   <h2>Welcome</h2>
+   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sodales mauris vitae nisl lacinia, a ullamcorper dolor sollicitudin. Suspendisse egestas ex non aliquet efficitur.</p>
+   <p>Quisque vel nunc tempor, scelerisque magna vitae, viverra erat. Fusce iaculis metus ut ex elementum interdum.</p>
+</section>
+<section class="block white">
+   <h2>Book Now</h2>
+   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sodales mauris vitae nisl lacinia, a ullamcorper dolor sollicitudin.</p>
+   <form>
+      <input type="" placeholder="Check-in Date" id="datepicker">
+      <input type="number" placeholder="Nights" min="1">
+      <input type="submit" value="Check Availability">
+      <div class="clear"></div>
+   </form>
+</section>
+<section class="block white">
+   <h2>Facilities</h2>
+   <p>Quisque vel nunc tempor, scelerisque magna vitae, viverra erat. Fusce iaculis metus ut ex elementum interdum.</p>
+   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sodales mauris vitae nisl lacinia, a ullamcorper dolor sollicitudin. Suspendisse egestas ex non aliquet efficitur.</p>
+</section>
+<section class="block image">
+
+</section>
+<div class="clear"></div>
+</main>
+
+<iframe
+  id="map-canvas"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDOh01pvlYFhXB-DcfBG_Cf9BVLHGRvVX8
+    &q=9+Longland+St,Newstead" allowfullscreen>
+</iframe>
+<footer>
+<div class="container">
+<p>&copy; 2015. Sunshine Cove</p>
+<ul class="social">
+   <a href="http://fb.com"><li class="fb">Facebook</li></a>
+   <a href="http://twitter.com"><li class="twit">Twitter</li></a>
+   <a href="http://instagram.com"><li class="insta">Instagram</li></a>
+</ul>
+</div>
+</footer>
+<script src="pikaday.js"></script>
+<script>
+
+    var picker = new Pikaday(
+    {
+        field: document.getElementById('datepicker'),
+    });
+
+
+</script>
+</body>
